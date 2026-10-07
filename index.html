@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Todo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Todo">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#fafaf8">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" href="icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Todo</h1>
+    <span class="sub">Nouvelle tâche</span>
+  </header>
+
+  <!-- Premier lancement : saisie du code secret -->
+  <section id="setup" hidden>
+    <p>Saisissez le code secret choisi lors de l'installation. Il ne sera demandé qu'une fois.</p>
+    <form id="setup-form" autocomplete="off">
+      <input id="setup-code" type="password" placeholder="Code secret" required>
+      <button type="submit" class="primary">Valider</button>
+      <p id="setup-error" class="error"></p>
+    </form>
+  </section>
+
+  <!-- Formulaire d'ajout -->
+  <form id="add-form" hidden autocomplete="off">
+    <label for="text">Tâche</label>
+    <textarea id="text" rows="3" placeholder="Que faut-il faire ?" required></textarea>
+    <p class="hint">Pour dicter : touchez le micro 🎤 du clavier.</p>
+
+    <label>Catégorisation</label>
+    <div id="priorities" class="segmented"></div>
+
+    <label for="deadline">DL (date limite)</label>
+    <div class="deadline">
+      <input id="deadline" type="date">
+      <span id="no-deadline" class="none" hidden>inexistante</span>
+    </div>
+
+    <label>Catégorie</label>
+    <div id="categories" class="chips"></div>
+
+    <label for="comment">Commentaire <span class="muted">(facultatif)</span></label>
+    <input id="comment" type="text">
+
+    <button type="submit" class="primary big" id="submit">Ajouter</button>
+    <p id="queue" class="queue" hidden></p>
+  </form>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <footer>
+    <button type="button" id="change-code" class="link" hidden>Changer le code secret</button>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
